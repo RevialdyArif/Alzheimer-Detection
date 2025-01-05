@@ -1,0 +1,19 @@
+from roboflow import Roboflow
+
+# Masukkan API Key Roboflow Anda
+rf = Roboflow(api_key="FFtyUiWHubiyUZVOWjpO")  # Ganti dengan API Key Anda
+
+# Masukkan nama proyek yang ingin Anda akses
+project_name = "alzheimer-bwmtc-ui3wf"  # Ganti dengan nama proyek Anda
+
+# Hubungkan ke proyek di workspace Anda
+project = rf.workspace().project(project_name)
+
+# Pilih versi model (ubah versi jika diperlukan, misalnya versi 1)
+model_version = project.version(1)
+
+# Unduh model dalam format YOLOv8
+download_path = model_version.download("yolov8")
+
+# Berikan notifikasi setelah unduhan selesai
+print(f"Model berhasil diunduh dan disimpan di: {C:\Users\revia\Downloads\Compressed}")
