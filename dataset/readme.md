@@ -1,1 +1,1 @@
-Link to dataset-https://www.kaggle.com/datasets/sachinkumar413/alzheimer-mri-dataset
+Link to dataset-https://universe.roboflow.com/defisiensi-sawit/alzheimer-bwmtc

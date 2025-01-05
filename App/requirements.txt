@@ -1,4 +1,6 @@
 streamlit
-tensorflow
+cv2
+os
+ultralytics
 matplotlib
 numpy
