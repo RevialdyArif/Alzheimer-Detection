@@ -42,6 +42,18 @@ def analyze_mri(image_path):
     _, segmented = cv2.threshold(img, 120, 255, cv2.THRESH_BINARY)
     return edges, segmented
 
+def plot_histogram(image):
+    image_array = np.array(image.convert('L'))  # Convert to grayscale
+    hist, bins = np.histogram(image_array.flatten(), bins=256, range=[0, 256])
+
+    # Plot histogram
+    fig, ax = plt.subplots()
+    ax.plot(hist, color='black')
+    ax.set_title("Histogram of Grayscale Image")
+    ax.set_xlabel("Pixel Intensity")
+    ax.set_ylabel("Frequency")
+    st.pyplot(fig)
+
 st.set_page_config(
     page_title="Alzheimer Detection", 
     layout="centered", 
@@ -80,7 +92,6 @@ st.markdown(
     "\n- Cognitive Normal: Lanjutkan gaya hidup sehat dan lakukan pemeriksaan rutin."
 )
 
-
 st.write("### Unggah Gambar MRI untuk Analisis")
 uploaded_file = st.file_uploader("Unggah file gambar (JPG/PNG)", type=["jpg", "jpeg", "png"])
 
@@ -108,6 +119,10 @@ if uploaded_file is not None:
         st.write("### Hasil Analisis Tambahan")
         st.image(edges, caption="Deteksi Tepi (Canny)", use_column_width=True, channels="GRAY")
         st.image(segmented, caption="Segmentasi (Threshold)", use_column_width=True, channels="GRAY")
+
+        st.write("### Histogram Distribusi Intensitas Piksel")
+        image = Image.open(image_path)
+        plot_histogram(image)
 
     except Exception as e:
         st.error(f"Terjadi kesalahan saat memproses gambar: {e}")
