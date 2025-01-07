@@ -111,7 +111,6 @@ if uploaded_file is not None:
         if bounding_boxes:
             boxed_image = draw_boxes(image_path, bounding_boxes, labels)
 
-            st.image(boxed_image, caption="Gambar dengan Deteksi", use_column_width=True)
             st.image(annotated_image, caption="Hasil Deteksi Anotasi", use_column_width=True)
 
         edges, segmented = analyze_mri(image_path)
